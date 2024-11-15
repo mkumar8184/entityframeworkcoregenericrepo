@@ -24,7 +24,8 @@
 ## What's Extra in This Codebase?
 1. **Session User Integration**  
    Automatically manages `CreatedBy` and `UpdatedBy` fields based on the current user session.
-
+1. **Stop Unauthorized user Transaction**  
+   Automatically manages `CreatedBy` and `UpdatedBy` fields based on the current user session.
 2. **Transaction Support**  
    Ensures transactional consistency across operations.
 

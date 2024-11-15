@@ -47,48 +47,5 @@ namespace GenericRepository.BaseRepository
 }
 
 
-    //public class UserProfileViewRepository : BaseRepository<UserProfileView, PSIDbContext>, IUserViewProfileRepository
-    //{
-    //    public UserProfileViewRepository(PSIDbContext context) : base(context)
-    //    {
-    //    }
-    //}
-
-    //public async Task<bool> AddOrderWithDetailsAsync(Order order, List<OrderDetail> orderDetails)
-    //{
-    //    if (order == null || orderDetails == null || orderDetails.Count == 0)
-    //        throw new ArgumentNullException("Order and OrderDetails cannot be null");
-
-    //    try
-    //    {
-    //        // Start a new transaction
-    //        using var transaction = await _context.Database.BeginTransactionAsync();
-
-    //        // Add the order
-    //        _context.Set<Order>().Add(order);
-    //        await SaveChangesAsync(transaction);  // Save Order to generate its Id
-
-    //        // Now, set the foreign key in orderDetails and add them
-    //        foreach (var detail in orderDetails)
-    //        {
-    //            detail.OrderId = order.Id; // Link OrderDetail to the created Order
-    //            _context.Set<OrderDetail>().Add(detail);
-    //        }
-
-    //        // Save changes for the OrderDetails
-    //        await SaveChangesAsync(transaction);
-
-    //        // Commit the transaction
-    //        await transaction.CommitAsync();
-
-    //        return true;
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        // Rollback the transaction if an error occurs
-    //        LogAndThrowException("Saving order with details", ex);
-    //        return false;
-    //    }
-    //}
 
 

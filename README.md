@@ -20,6 +20,7 @@
 1. Download code base
 2. change below function as per your need to get user id and other data
    this function makes sure you have user id before inserting data or getting data from any table . you can change this as per need
+   
  private void SetCompanyIdForEntity(T entity,bool isCreating=false)
  {
      // Get the CompanyId from HttpContext or where do you store
@@ -41,9 +42,12 @@
      if(isCreating)
      {
          entity.CreatedBy = Convert.ToInt32(userId);
-     }  }
-  3. BaseEntity Class. you can defined common field here from data so you dont need to repeat that
-    public class BaseEntity
+     } 
+   }
+     
+  4. BaseEntity Class. you can defined common field here from data so you dont need to repeat that
+     
+public class BaseEntity
  {
      public int CreatedBy { get; set; }
      public DateTime CreatedOn { get; set; }=DateTime.Now;
@@ -52,13 +56,16 @@
      public int CompanyId { get; set; }  // CompanyId field
 
  }
+ 
  how to call this , 
  lets say you have to save data from employee table so either you can directly use BaseRepository or for better segregation you can create another employee Repository to communite database like below
+
 
 public interface IEmployeeDataRepository 
 {
     Task<Employees> AddEmployee(EmployeeDataCommand command);
 }
+
 public class EmployeeDataRepository : BaseRepository<Employees, HRServiceHubContext>, IEmployeeDataRepository
 {
     public EmployeeDataRepository(HRServiceHubContext context, IHttpContextAccessor httpContextAccessor)
@@ -67,6 +74,7 @@ public class EmployeeDataRepository : BaseRepository<Employees, HRServiceHubCont
     // you can remove whatever not required in your case or handle as per your need .but you need to make chhange in baseRepository as well
         // The constructor passes the context and HttpContextAccessor to the base class (BaseRepository)
     }
+}
 
     public async Task<Employees> AddEmployee(EmployeeDataCommand command)
     {

@@ -23,6 +23,7 @@
    
  private void SetCompanyIdForEntity(T entity,bool isCreating=false)
  {
+ 
      // Get the CompanyId from HttpContext or where do you store
    
      var companyId = _httpContextAccessor.HttpContext?.Items["CompanyId"]?.ToString();
@@ -43,7 +44,7 @@
      {
          entity.CreatedBy = Convert.ToInt32(userId);
      } 
-   }
+}
      
   4. BaseEntity Class. you can defined common field here from data so you dont need to repeat that
      

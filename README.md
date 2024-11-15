@@ -86,7 +86,7 @@ For better segregation, extend the BaseRepository for specific entities like Emp
 ```csharp
 public interface IEmployeeDataRepository
 {
-    Task<Employees> AddEmployee(EmployeeDataCommand command);
+    Task<Employees> AddEmployee(EmployeeDataObject obj);
 }
 
 public class EmployeeDataRepository : BaseRepository<Employees, HRServiceHubContext>, IEmployeeDataRepository
@@ -96,12 +96,12 @@ public class EmployeeDataRepository : BaseRepository<Employees, HRServiceHubCont
     {
     }
 
-    public async Task<Employees> AddEmployee(EmployeeDataCommand command)
+    public async Task<Employees> AddEmployee(EmployeeDataObject obj)
     {
         try
         {
             // Map command to entity using AutoMapper
-            var mappedData = MappingProfile<EmployeeDataCommand, Employees>.Map(command);
+            var mappedData = MappingProfile<EmployeeDataObject, Employees>.Map(obj);
             var data = await AddAsync(mappedData);
             return data;
         }

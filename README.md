@@ -100,7 +100,7 @@ public class EmployeeDataRepository : BaseRepository<Employees, HRServiceHubCont
     {
         try
         {
-            // Map command to entity using AutoMapper
+            // Map object to entity using AutoMapper
             var mappedData = MappingProfile<EmployeeDataObject, Employees>.Map(obj);
             var data = await AddAsync(mappedData);
             return data;
@@ -132,7 +132,7 @@ Example 1: Filter by User ID
 
 public IEnumerable<Employees> GetEmployeeByUserId(string userId)
 {
-    var filterExpression = Filter<UserProfileView>.Create(p => p.UserId == userId);           
+    var filterExpression = Filter<Employees>.Create(p => p.UserId == userId);           
     var result = Get(Query.WithFilter(filterExpression)); // Apply filter expression
     return result;        
 }

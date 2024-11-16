@@ -1,4 +1,5 @@
 # Generic Repository in Entity Framework Core and SQL Server
+# Generic repository in entityFramework core and .net core c#
 
 ## Why Use Generic Repository Pattern?
 1. **Code Reusability**  
